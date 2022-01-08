@@ -19,9 +19,11 @@ class ReviewRepositoryTest {
         // 준비
 
         // 실행
-        Review review = reviewRepository.findById(1L).orElseThrow();
+        Review review = reviewRepository.findById(1L).orElseThrow(RuntimeException::new);
 
         // 검증
         assertThat(review.getId()).isEqualTo(1L);
+        assertThat(review.getContent()).isEqualTo("재밌어요");
+        assertThat(review.getPhoneNumber()).isEqualTo("010-1111-2222");
     }
 }
